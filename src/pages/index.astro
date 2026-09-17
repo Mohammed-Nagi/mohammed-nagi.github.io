@@ -28,9 +28,22 @@ const projects = [
 		repo: null,
 	},
 ];
+
+const personJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Mohammed Nagi',
+	jobTitle: 'AI Researcher',
+	affiliation: {
+		'@type': 'Organization',
+		name: 'AIMS South Africa',
+	},
+	sameAs: [GITHUB_URL, LINKEDIN_URL],
+};
 ---
 
-<BaseLayout title="Mohammed Nagi" description="Mohammed Nagi — mechanistic interpretability research on InstaNovo, a de novo sequencing transformer.">
+<BaseLayout title="Mohammed Nagi" description="Mohammed Nagi — AI Safety researcher specialising in mechanistic interpretability.">
+	<script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
 	<div class="home-layout">
 		<aside class="identity">
 			<img
