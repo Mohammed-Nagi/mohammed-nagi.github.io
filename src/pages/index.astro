@@ -30,7 +30,7 @@ const projects = [
 ];
 ---
 
-<BaseLayout title="Mohammed Nagi" description="TODO: one-line site description for search engines">
+<BaseLayout title="Mohammed Nagi" description="Mohammed Nagi — mechanistic interpretability research on InstaNovo, a de novo sequencing transformer.">
 	<div class="home-layout">
 		<aside class="identity">
 			<img
@@ -87,12 +87,8 @@ const projects = [
 
 			<Section id="research" title="Research">
 				<article>
-					<h3><a href="/research/thesis">Sparse Autoencoders on InstaNovo</a></h3>
+					<h3><a href={`${GITHUB_URL}/instanovo-sae`}>Sparse Autoencoders on InstaNovo</a></h3>
 					<p>Sparse autoencoder dictionaries trained on the residual stream activations of InstaNovo, asking which learned features correspond to which fragmentation events.</p>
-					<p class="entry-links">
-						<a href="/research/thesis">Writeup</a>
-						<a href={`${GITHUB_URL}/instanovo-sae`}>Code</a>
-					</p>
 				</article>
 			</Section>
 
@@ -235,14 +231,4 @@ const projects = [
 		color: var(--text-muted);
 	}
 
-	.entry-links {
-		display: flex;
-		gap: 1.25rem;
-		margin-block-start: 0.5rem;
-		font-size: var(--step--1);
-	}
-
-	.entry-links a {
-		color: var(--accent);
-	}
 </style>

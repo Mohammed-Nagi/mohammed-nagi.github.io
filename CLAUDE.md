@@ -13,16 +13,19 @@ A personal research site. Astro, static, deployed to GitHub Pages.
 minutes, that I do mechanistic interpretability on transformer models used in scientific
 discovery — and that I have one concrete result worth remembering.
 
-**The centrepiece** is the MSc thesis writeup (sparse autoencoders on InstaNovo). The
-memorable claim is that The features the concept vocabulary can't score are the most
-interpretable in the model, not the least. Everything else on the site supports that
-page. When a design decision is ambiguous, resolve it in favour of that page reading well.
+**The centrepiece for now is the home page.** The MSc thesis writeup (sparse autoencoders
+on InstaNovo) is deferred — shipping without `/research/thesis` for now. The Research
+entry on the home page links straight to the `instanovo-sae` repo instead. The memorable
+claim, for whenever the writeup lands, is that the features the concept vocabulary can't
+score are the most interpretable in the model, not the least. Until then, resolve
+ambiguous design decisions in favour of the home page reading well.
 
 ## Stack
 
 - Astro 7.3.3, minimal JS. No React/Vue/Svelte unless something genuinely needs interactivity.
-- MDX for long-form content (`@astrojs/mdx`)
-- `remark-math` + `rehype-katex` for equations
+- MDX for long-form content (`@astrojs/mdx`) — configured but currently unused; the
+  thesis writeup that needs it is deferred
+- `remark-math` + `rehype-katex` for equations — same: wired up, unused for now
 - Astro's `<Image>` component for all photography
 - Plain CSS with custom properties. No Tailwind, no component library.
 - Content collections for projects and photos, with typed schemas.
@@ -31,7 +34,7 @@ page. When a design decision is ambiguous, resolve it in favour of that page rea
 
 ```
 /                 identity, research summary, selected work, links
-/research/thesis  the full writeup — long-form, figures, math, footnotes
+/research/thesis  deferred — the full writeup, long-form, figures, math, footnotes
 /projects         short entries linking out to GitHub repos
 /photography      gallery
 /about            longer bio
