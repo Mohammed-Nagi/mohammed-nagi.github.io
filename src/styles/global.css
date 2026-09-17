@@ -1,0 +1,81 @@
+/* Fonts (variable, self-hosted, latin subset served automatically via unicode-range) */
+@import '@fontsource-variable/source-serif-4/index.css'; /* full wght+opsz axes */
+@import '@fontsource-variable/source-sans-3/wght.css';
+
+:root {
+  color-scheme: light;
+
+  /* Palette */
+  --bg: #F7F8F6;
+  --surface: #F2F1EC;
+  --text: #1F2421;
+  --text-muted: #6B7269;
+  --accent: #3F6B54;
+  --accent-hov: #2E5240;
+  --sage: #8FAE9B;
+  --rule: #E2E0D8;
+
+  /* Typefaces */
+  --font-serif: 'Source Serif 4 Variable', ui-serif, Georgia, serif;
+  --font-sans: 'Source Sans 3 Variable', ui-sans-serif, system-ui, sans-serif;
+
+  /* Long-form measure */
+  --measure: 70ch;
+  --leading-prose: 1.65;
+
+  /* Type scale (fluid, one scale used everywhere) */
+  --step--1: clamp(0.833rem, 0.8rem + 0.15vw, 0.9rem);
+  --step-0:  clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1:  clamp(1.25rem, 1.19rem + 0.3vw, 1.4rem);
+  --step-2:  clamp(1.563rem, 1.47rem + 0.45vw, 1.8rem);
+  --step-3:  clamp(1.953rem, 1.8rem + 0.7vw, 2.4rem);
+}
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+img, svg, video { display: block; max-width: 100%; }
+
+/* Base — html stays at browser default font-size; the clamped scale lives on body
+   so rem-based steps don't compound against a clamped root value. */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--step-0);
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.15;
+  margin-block: 1.5em 0.5em;
+}
+
+h1 { font-size: var(--step-3); }
+h2 { font-size: var(--step-2); }
+h3 { font-size: var(--step-1); }
+small { font-size: var(--step--1); }
+
+/* Long-form prose (thesis, about) — not applied to any element yet */
+.prose {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  line-height: var(--leading-prose);
+  max-width: var(--measure);
+}
+
+/* Keyboard focus */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
