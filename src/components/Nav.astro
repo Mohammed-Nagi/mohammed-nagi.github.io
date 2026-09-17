@@ -13,8 +13,8 @@ const currentPath = Astro.url.pathname;
 	<ul>
 		{
 			links.map((link) => {
-				const linkPath = link.href.split('#')[0];
-				const isCurrent = linkPath === currentPath;
+				const isAnchor = link.href.includes('#');
+				const isCurrent = !isAnchor && link.href === currentPath;
 				return (
 					<li>
 						<a href={link.href} aria-current={isCurrent ? 'page' : undefined}>
@@ -60,3 +60,49 @@ const currentPath = Astro.url.pathname;
 		border-bottom-color: var(--accent);
 	}
 </style>
+
+<script>
+	const nav = document.querySelector('nav[aria-label="Site"]');
+	if (nav && 'IntersectionObserver' in window) {
+		const anchorLinks = new Map<string, HTMLAnchorElement>();
+
+		nav.querySelectorAll<HTMLAnchorElement>('a[href^="/#"]').forEach((link) => {
+			const id = link.getAttribute('href')?.slice(2);
+			if (id) anchorLinks.set(id, link);
+		});
+
+		const sections = [...anchorLinks.keys()]
+			.map((id) => document.getElementById(id))
+			.filter((el): el is HTMLElement => el !== null);
+
+		if (sections.length) {
+			const header = document.querySelector('header');
+			const headerHeight = header ? header.getBoundingClientRect().height : 0;
+
+			const setActive = (id: string | null) => {
+				anchorLinks.forEach((link, key) => {
+					if (key === id) {
+						link.setAttribute('aria-current', 'page');
+					} else {
+						link.removeAttribute('aria-current');
+					}
+				});
+			};
+
+			const observer = new IntersectionObserver(
+				(entries) => {
+					const visible = entries.filter((entry) => entry.isIntersecting);
+					if (visible.length === 0) return;
+					visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+					setActive(visible[0].target.id);
+				},
+				{
+					rootMargin: `-${headerHeight}px 0px -60% 0px`,
+					threshold: 0,
+				}
+			);
+
+			sections.forEach((section) => observer.observe(section));
+		}
+	}
+</script>
