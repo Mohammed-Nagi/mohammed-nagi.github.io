@@ -33,11 +33,11 @@ ambiguous design decisions in favour of the home page reading well.
 ## Structure
 
 ```
-/                 identity, research summary, selected work, links
+/                 identity, research summary, selected work, links (About is an
+                  unlabelled section on this page, linked via nav anchor)
 /research/thesis  deferred — the full writeup, long-form, figures, math, footnotes
 /projects         short entries linking out to GitHub repos
 /photography      gallery
-/about            longer bio
 ```
 
 Projects live as brief entries here and in full on GitHub. Do not build elaborate

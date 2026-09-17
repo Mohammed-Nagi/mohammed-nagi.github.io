@@ -81,7 +81,7 @@ const projects = [
 		</aside>
 
 		<div class="content">
-			<p class="summary">I work on <strong>mechanistic interpretability</strong>, with a focus on models that encode physical signals
+			<p class="summary" id="about">I work on <strong>mechanistic interpretability</strong>, with a focus on models that encode physical signals
 			rather than language. Across my work, I prioritise claims that can be <strong>falsified by intervention</strong> and I am motivated by the broader question
 			of what studying intelligence in <strong>non-linguistic systems</strong> can teach us about interpretability methods built primarily on language models.</p>
 
@@ -190,6 +190,10 @@ const projects = [
 		flex: 1 1 auto;
 		min-width: 0;
 		max-width: var(--measure);
+	}
+
+	.summary {
+		scroll-margin-top: calc(var(--header-h) + 1rem);
 	}
 
 	.project-list {
