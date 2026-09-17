@@ -35,6 +35,14 @@
   --step-3:  clamp(1.953rem, 1.8rem + 0.7vw, 2.4rem);
 }
 
+/* Header stacks into two rows below 640px (see Nav/BaseLayout), which grows
+   its height beyond --header-h — widen the anchor scroll offset to match. */
+@media (max-width: 639px) {
+  :root {
+    --header-h: 6.5rem;
+  }
+}
+
 /* Reset */
 *, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; }

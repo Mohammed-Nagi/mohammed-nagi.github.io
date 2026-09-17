@@ -59,6 +59,18 @@ const currentPath = Astro.url.pathname;
 		color: var(--accent);
 		border-bottom-color: var(--accent);
 	}
+
+	@media (max-width: 639px) {
+		ul {
+			flex-wrap: nowrap;
+			gap: 0.75rem;
+		}
+
+		a {
+			font-size: var(--step--1);
+			white-space: nowrap;
+		}
+	}
 </style>
 
 <script>
