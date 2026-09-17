@@ -16,6 +16,9 @@
   --sage: #8FAE9B;
   --rule: #E2E0D8;
 
+  /* Sticky header height, used for scroll-margin offsets on anchor targets */
+  --header-h: 4.5rem;
+
   /* Typefaces */
   --font-serif: 'Source Serif 4 Variable', ui-serif, Georgia, serif;
   --font-sans: 'Source Sans 3 Variable', ui-sans-serif, system-ui, sans-serif;
@@ -41,9 +44,10 @@ img, svg, video { display: block; max-width: 100%; }
    so rem-based steps don't compound against a clamped root value. */
 body {
   background:
-    radial-gradient(60rem 40rem at 15% 10%, rgba(143, 174, 155, 0.30), transparent 70%),
-    radial-gradient(50rem 35rem at 85% 30%, rgba(63, 107, 84, 0.20), transparent 70%),
-    radial-gradient(55rem 45rem at 40% 85%, rgba(143, 174, 155, 0.24), transparent 70%),
+    radial-gradient(65rem 45rem at 12% 8%, rgba(143, 174, 155, 0.30), transparent 70%),
+    radial-gradient(55rem 40rem at 88% 22%, rgba(96, 152, 156, 0.20), transparent 70%),
+    radial-gradient(60rem 42rem at 70% 78%, rgba(198, 172, 120, 0.22), transparent 70%),
+    radial-gradient(50rem 38rem at 30% 92%, rgba(143, 174, 155, 0.22), transparent 70%),
     var(--bg);
   background-attachment: fixed;
   min-height: 100dvh;
