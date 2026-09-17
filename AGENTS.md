@@ -1,3 +1,9 @@
+## Version
+
+This project is on Astro 7.3.3. Check the linked documentation rather than
+relying on recall for anything version-sensitive — image handling, content
+collections, and config APIs have all changed across Astro majors.
+
 ## Development
 
 When starting the dev server, use background mode:
