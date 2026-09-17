@@ -1,0 +1,48 @@
+---
+interface Props {
+	title: string;
+	id: string;
+}
+
+const { title, id } = Astro.props;
+const hasIcon = Astro.slots.has('icon');
+---
+
+<section id={id}>
+	<h2>
+		{hasIcon && (
+			<span class="section-icon">
+				<slot name="icon" />
+			</span>
+		)}
+		{title}
+	</h2>
+	<slot />
+</section>
+
+<style>
+	section {
+		margin-block-start: 4rem;
+	}
+
+	h2 {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		margin-block-start: 0;
+		font-family: var(--font-serif);
+		font-optical-sizing: auto;
+		font-weight: 600;
+		letter-spacing: -0.01em;
+	}
+
+	.section-icon {
+		display: inline-flex;
+		color: var(--sage);
+	}
+
+	.section-icon :global(svg) {
+		width: 20px;
+		height: 20px;
+	}
+</style>
