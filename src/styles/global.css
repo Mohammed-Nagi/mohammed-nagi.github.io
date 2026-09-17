@@ -7,11 +7,12 @@
 
   /* Palette */
   --bg: #F7F8F6;
+  --bg-tint: #E8EEE7;
   --surface: #F2F1EC;
   --text: #1F2421;
   --text-muted: #6B7269;
-  --accent: #3F6B54;
-  --accent-hov: #2E5240;
+  --accent: #2F5943;
+  --accent-hov: #22422F;
   --sage: #8FAE9B;
   --rule: #E2E0D8;
 
@@ -39,7 +40,13 @@ img, svg, video { display: block; max-width: 100%; }
 /* Base — html stays at browser default font-size; the clamped scale lives on body
    so rem-based steps don't compound against a clamped root value. */
 body {
-  background: var(--bg);
+  background:
+    radial-gradient(60rem 40rem at 15% 10%, rgba(143, 174, 155, 0.30), transparent 70%),
+    radial-gradient(50rem 35rem at 85% 30%, rgba(63, 107, 84, 0.20), transparent 70%),
+    radial-gradient(55rem 45rem at 40% 85%, rgba(143, 174, 155, 0.24), transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
+  min-height: 100dvh;
   color: var(--text);
   font-family: var(--font-sans);
   font-size: var(--step-0);
@@ -55,6 +62,9 @@ h1 { font-size: var(--step-3); }
 h2 { font-size: var(--step-2); }
 h3 { font-size: var(--step-1); }
 small { font-size: var(--step--1); }
+
+a { color: var(--accent); }
+a:hover { color: var(--accent-hov); }
 
 /* Long-form prose (thesis, about) — not applied to any element yet */
 .prose {
