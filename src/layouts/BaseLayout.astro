@@ -2,6 +2,7 @@
 import '../styles/global.css';
 // KaTeX CSS is intentionally NOT imported here — pages that render math
 // (e.g. the thesis writeup) must import 'katex/dist/katex.min.css' themselves.
+import Nav from '../components/Nav.astro';
 
 interface Props {
 	title: string;
@@ -22,6 +23,27 @@ const { title, description } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<header>
+			<Nav />
+		</header>
+		<main>
+			<slot />
+		</main>
 	</body>
 </html>
+
+<style>
+	header {
+		padding: 1.5rem clamp(1rem, 4vw, 2.5rem) 0;
+	}
+
+	main {
+		padding: 3rem clamp(1rem, 4vw, 2.5rem) 3rem;
+	}
+
+	@media (min-width: 900px) {
+		main {
+			padding-top: 6rem;
+		}
+	}
+</style>
