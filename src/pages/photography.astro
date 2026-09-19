@@ -49,7 +49,9 @@ const galleryPhotos = await Promise.all(
 	<h1>Photography</h1>
 
 	<div class="gallery">
-		<!-- TODO: replace placeholder alt text with real descriptions -->
+		{/* alt="" is deliberate: these photos are decorative rather than
+		informative, so assistive tech should skip them, not announce a
+		meaningless index. Don't replace with generated placeholder text. */}
 		{
 			galleryPhotos.map(({ index, webpImage, jpgImage }) => (
 				<button type="button" class="thumb" data-index={index}>
@@ -61,7 +63,7 @@ const galleryPhotos = await Promise.all(
 							sizes={sizes}
 							width={jpgImage.attributes.width}
 							height={jpgImage.attributes.height}
-							alt={`Photograph ${index} of 40`}
+							alt=""
 							loading={index <= 3 ? undefined : 'lazy'}
 							decoding="async"
 							fetchpriority={index === 1 ? 'high' : undefined}
