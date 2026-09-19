@@ -24,18 +24,30 @@ const hasIcon = Astro.slots.has('icon');
 	section {
 		margin-block-start: 4rem;
 		scroll-margin-top: calc(var(--header-h) + 1rem);
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 0.75rem;
+	}
+
+	@media (min-width: 900px) {
+		section {
+			grid-template-columns: max-content 1fr;
+			column-gap: 2rem;
+			align-items: start;
+		}
 	}
 
 	h2 {
 		display: flex;
 		align-items: center;
 		gap: 0.6rem;
-		margin-block-start: 0;
+		margin: 0;
 		font-family: var(--font-serif);
 		font-optical-sizing: auto;
 		font-weight: 600;
 		letter-spacing: -0.01em;
-		scroll-margin-top: calc(var(--header-h) + 1rem);
+		font-size: var(--step-0);
+		color: var(--text-muted);
 	}
 
 	.section-icon {

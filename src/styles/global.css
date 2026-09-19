@@ -36,7 +36,7 @@
   --step-0:  clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
   --step-1:  clamp(1.25rem, 1.19rem + 0.3vw, 1.4rem);
   --step-2:  clamp(1.563rem, 1.47rem + 0.45vw, 1.8rem);
-  --step-3:  clamp(1.953rem, 1.8rem + 0.7vw, 2.4rem);
+  --step-3:  clamp(2rem, 1.75rem + 1.5vw, 3.25rem);
 }
 
 /* Header stacks into two rows below 640px (see Nav/BaseLayout), which grows
