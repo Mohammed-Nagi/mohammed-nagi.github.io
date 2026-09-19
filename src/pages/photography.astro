@@ -54,7 +54,7 @@ const galleryPhotos = await Promise.all(
 		meaningless index. Don't replace with generated placeholder text. */}
 		{
 			galleryPhotos.map(({ index, webpImage, jpgImage }) => (
-				<button type="button" class="thumb" data-index={index}>
+				<button type="button" class="thumb" data-index={index} aria-label={`View photograph ${index}`}>
 					<picture>
 						<source srcset={webpImage.srcSet.attribute} type="image/webp" sizes={sizes} />
 						<img
