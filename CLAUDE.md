@@ -76,8 +76,8 @@ If you think a sentence of mine is unclear, say so in conversation. Don't edit i
 ```
 
 Green appears in links, hover states, hairlines, and the active nav item. Nothing else.
-No green fills, no green backgrounds, no tinted sections. The background stays neutral so
-it doesn't fight the photographs.
+No green fills, no green backgrounds, no tinted sections. The gradient background in
+`global.css` applies site-wide, including `/photography` — no per-page override.
 
 Verify any new colour against the background at 4.5:1 minimum before using it for text.
 
