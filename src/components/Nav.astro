@@ -6,7 +6,13 @@ const links = [
 	{ href: '/photography', label: 'Photography' },
 ];
 
-const currentPath = Astro.url.pathname;
+// Static builds render nested routes as e.g. /photography/index.html, so
+// Astro.url.pathname carries a trailing slash the href values below don't.
+function stripTrailingSlash(path: string) {
+	return path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path;
+}
+
+const currentPath = stripTrailingSlash(Astro.url.pathname);
 ---
 
 <nav aria-label="Site">

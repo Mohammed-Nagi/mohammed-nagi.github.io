@@ -8,9 +8,10 @@ interface Props {
 	title: string;
 	description: string;
 	ogImage?: string;
+	bodyClass?: string;
 }
 
-const { title, description, ogImage = '/og-image.png' } = Astro.props;
+const { title, description, ogImage = '/og-image.png', bodyClass } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL(ogImage, Astro.site);
@@ -38,7 +39,7 @@ const ogImageURL = new URL(ogImage, Astro.site);
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImageURL} />
 	</head>
-	<body>
+	<body class={bodyClass}>
 		<header>
 			<a href="/" class="wordmark">Nagi</a>
 			<div class="nav-wrap">
@@ -111,5 +112,9 @@ const ogImageURL = new URL(ogImage, Astro.site);
 
 	main {
 		padding: 3rem clamp(1rem, 4vw, 2.5rem) 6rem;
+	}
+
+	body.flat-bg {
+		background: var(--bg);
 	}
 </style>

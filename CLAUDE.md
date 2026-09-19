@@ -26,7 +26,10 @@ ambiguous design decisions in favour of the home page reading well.
 - MDX for long-form content (`@astrojs/mdx`) — configured but currently unused; the
   thesis writeup that needs it is deferred
 - `remark-math` + `rehype-katex` for equations — same: wired up, unused for now
-- Astro's `<Image>` component for all photography
+- Photography uses `getImage()` from `astro:assets`, not `<Image>`/`<Picture>` —
+  each photo ships as a hand-tuned JPEG+WebP pair (see `scripts/process-photos.mjs`),
+  and `<Picture>` would regenerate one format from the other at its own default
+  quality instead of preserving both. Don't "simplify" this back to `<Picture>`.
 - Plain CSS with custom properties. No Tailwind, no component library.
 - Content collections for projects and photos, with typed schemas.
 
