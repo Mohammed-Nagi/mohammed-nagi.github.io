@@ -135,7 +135,7 @@ const personJsonLd = {
 		display: flex;
 		flex-direction: column;
 		gap: 4rem;
-		max-width: 1200px;
+		max-width: 1300px;
 		margin-inline: auto;
 	}
 
@@ -147,7 +147,7 @@ const personJsonLd = {
 	}
 
 	.identity {
-		flex: 0 0 380px;
+		flex: 0 0 480px;
 		text-align: center;
 		padding: 2rem;
 		background: var(--surface);
@@ -217,7 +217,7 @@ const personJsonLd = {
 		scroll-margin-top: calc(var(--header-h) + 1rem);
 		font-family: var(--font-serif);
 		font-optical-sizing: auto;
-		font-size: var(--step-1);
+		font-size: clamp(1.0625rem, 1rem + 0.25vw, 1.2rem);
 		line-height: var(--leading-prose);
 		margin-block: 1rem 2.5rem;
 	}
