@@ -98,6 +98,13 @@ const personJsonLd = {
 			rather than language. Across my work, I prioritise claims that can be <strong>falsified by intervention</strong> and I am motivated by the broader question
 			of what studying intelligence in <strong>non-linguistic systems</strong> can teach us about interpretability methods built primarily on language models.</p>
 
+			<ul class="interests" aria-label="Interests">
+				<li>TODO 1</li>
+				<li>TODO 2</li>
+				<li>TODO 3</li>
+				<li>TODO 4</li>
+			</ul>
+
 			<Section id="research" title="Research">
 				<article class="entry">
 					<h3><a href={`${GITHUB_URL}/instanovo-sae`}>Sparse Autoencoders on InstaNovo</a></h3>
@@ -208,6 +215,28 @@ const personJsonLd = {
 
 	.summary {
 		scroll-margin-top: calc(var(--header-h) + 1rem);
+		font-family: var(--font-serif);
+		font-optical-sizing: auto;
+		font-size: var(--step-1);
+		line-height: var(--leading-prose);
+		margin-block: 1rem 2.5rem;
+	}
+
+	.interests {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.interests li {
+		font-size: var(--step--1);
+		color: var(--text-muted);
+		border: 1px solid var(--rule);
+		border-radius: 0.375rem;
+		padding: 0.35rem 0.85rem;
 	}
 
 	.project-list {
