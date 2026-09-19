@@ -31,7 +31,11 @@ const hasIcon = Astro.slots.has('icon');
 
 	@media (min-width: 900px) {
 		section {
-			grid-template-columns: max-content 1fr;
+			/* A fixed width, not max-content: each <section> is its own grid, so
+			   max-content sizes the label column independently per section —
+			   "Research" and "Projects" render to different pixel widths, which
+			   left the two content columns starting at different x-offsets. */
+			grid-template-columns: 6rem 1fr;
 			column-gap: 2rem;
 			align-items: start;
 		}
