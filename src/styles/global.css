@@ -3,8 +3,6 @@
 @import '@fontsource-variable/source-sans-3/wght.css';
 
 :root {
-  color-scheme: light;
-
   /* Palette */
   --bg: #F7F8F6;
   --bg-tint: #E8EEE7;
@@ -15,6 +13,12 @@
   --accent-hov: #22422F;
   --sage: #8FAE9B;
   --rule: #E2E0D8;
+
+  /* Background gradient hotspots (see body rule below) */
+  --grad-1: rgba(143, 174, 155, 0.30);
+  --grad-2: rgba(96, 152, 156, 0.20);
+  --grad-3: rgba(198, 172, 120, 0.22);
+  --grad-4: rgba(143, 174, 155, 0.22);
 
   /* Sticky header height, used for scroll-margin offsets on anchor targets */
   --header-h: 4.5rem;
@@ -43,6 +47,46 @@
   }
 }
 
+:root[data-theme='light'] { color-scheme: light; }
+:root[data-theme='dark']  { color-scheme: dark; }
+
+:root[data-theme='dark'] {
+  --bg: #151815;
+  --surface: #1E221E;
+  --text: #E8EAE6;
+  --text-muted: #A9AFA6;
+  --accent: #5DAE87;
+  --accent-hov: #74C7A0;
+  --sage: #6F8C7A;
+  --rule: #2B302B;
+
+  --grad-1: rgba(143, 174, 155, 0.08);
+  --grad-2: rgba(96, 152, 156, 0.06);
+  --grad-3: rgba(198, 172, 120, 0.07);
+  --grad-4: rgba(143, 174, 155, 0.07);
+}
+
+/* Theme toggle icon swap — kept unscoped/global rather than in BaseLayout's
+   scoped styles, since relying on Astro's data-astro-cid-* landing on <html>
+   is compiler behavior, not a documented contract. */
+.icon-moon {
+  display: none;
+}
+html[data-theme='dark'] .icon-sun {
+  display: none;
+}
+html[data-theme='dark'] .icon-moon {
+  display: inline-flex;
+}
+
+/* Theme switch transition — scoped to a transient class the toggle adds/removes
+   around the switch, never left on permanently (would make every hover state
+   lag instead of responding immediately). */
+html.theme-transition,
+html.theme-transition * {
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
 /* Reset */
 *, *::before, *::after { box-sizing: border-box; }
 body { margin: 0; }
@@ -52,10 +96,10 @@ img, svg, video { display: block; max-width: 100%; }
    so rem-based steps don't compound against a clamped root value. */
 body {
   background:
-    radial-gradient(65rem 45rem at 12% 8%, rgba(143, 174, 155, 0.30), transparent 70%),
-    radial-gradient(55rem 40rem at 88% 22%, rgba(96, 152, 156, 0.20), transparent 70%),
-    radial-gradient(60rem 42rem at 70% 78%, rgba(198, 172, 120, 0.22), transparent 70%),
-    radial-gradient(50rem 38rem at 30% 92%, rgba(143, 174, 155, 0.22), transparent 70%),
+    radial-gradient(65rem 45rem at 12% 8%, var(--grad-1), transparent 70%),
+    radial-gradient(55rem 40rem at 88% 22%, var(--grad-2), transparent 70%),
+    radial-gradient(60rem 42rem at 70% 78%, var(--grad-3), transparent 70%),
+    radial-gradient(50rem 38rem at 30% 92%, var(--grad-4), transparent 70%),
     var(--bg);
   background-attachment: fixed;
   min-height: 100dvh;

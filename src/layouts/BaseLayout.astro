@@ -20,6 +20,17 @@ const ogImageURL = new URL(ogImage, Astro.site);
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<script is:inline>
+			(function () {
+				try {
+					var stored = localStorage.getItem('theme');
+					var theme = stored === 'light' || stored === 'dark'
+						? stored
+						: (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+					document.documentElement.setAttribute('data-theme', theme);
+				} catch (e) {}
+			})();
+		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content={description} />
 		<link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -44,6 +55,15 @@ const ogImageURL = new URL(ogImage, Astro.site);
 			<div class="nav-wrap">
 				<Nav />
 			</div>
+			<button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+				<svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<circle cx="12" cy="12" r="4" />
+					<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+				</svg>
+				<svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+					<path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" />
+				</svg>
+			</button>
 		</header>
 		<main>
 			<slot />
@@ -112,4 +132,66 @@ const ogImageURL = new URL(ogImage, Astro.site);
 	main {
 		padding: 3rem clamp(1rem, 4vw, 2.5rem) 6rem;
 	}
+
+	.theme-toggle {
+		position: absolute;
+		right: 1.5rem;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 44px;
+		height: 44px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0;
+		border: 0;
+		background: none;
+		color: var(--text);
+		cursor: pointer;
+	}
+
+	.theme-toggle:hover {
+		color: var(--accent);
+	}
+
+	@media (max-width: 639px) {
+		.theme-toggle {
+			top: 0.75rem;
+			transform: none;
+		}
+	}
 </style>
+
+<script>
+	const html = document.documentElement;
+	const toggle = document.getElementById('theme-toggle');
+
+	if (toggle) {
+		function currentTheme() {
+			return html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+		}
+
+		function updateToggleUI(theme: string) {
+			const isDark = theme === 'dark';
+			toggle!.setAttribute('aria-pressed', String(isDark));
+			toggle!.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+		}
+
+		updateToggleUI(currentTheme());
+
+		let themeTransitionTimeout: ReturnType<typeof setTimeout>;
+		toggle.addEventListener('click', () => {
+			const next = currentTheme() === 'dark' ? 'light' : 'dark';
+			clearTimeout(themeTransitionTimeout);
+			html.classList.add('theme-transition');
+			html.setAttribute('data-theme', next);
+			try {
+				localStorage.setItem('theme', next);
+			} catch (e) {}
+			updateToggleUI(next);
+			themeTransitionTimeout = setTimeout(() => {
+				html.classList.remove('theme-transition');
+			}, 250);
+		});
+	}
+</script>
