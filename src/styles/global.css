@@ -92,6 +92,31 @@ html.theme-transition * {
 body { margin: 0; }
 img, svg, video { display: block; max-width: 100%; }
 
+/* Scrollbar — standard properties first. Width stays auto rather than thin:
+   the goal is colour matching, not a slimmer (harder to grab) scrollbar.
+   --sage is already theme-aware, so this follows light/dark on its own. */
+html {
+  scrollbar-color: var(--sage) transparent;
+  scrollbar-width: auto;
+}
+
+/* -webkit- fallback for older Safari. Note these pseudo-elements take
+   precedence over the standard properties above in Chromium, so both paths
+   are styled to the same result: sage thumb, transparent track, native width. */
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sage);
+  border-radius: 999px;
+}
+
 /* Base — html stays at browser default font-size; the clamped scale lives on body
    so rem-based steps don't compound against a clamped root value. */
 body {
