@@ -23,3 +23,7 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 photos-src/
+
+# agent instructions, not for public repo
+CLAUDE.md
+AGENTS.md
